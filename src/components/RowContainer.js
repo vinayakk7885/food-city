@@ -9,7 +9,7 @@ const RowContainer = ({ flag,data,scrollValue }) => {
 
     const rowContainer = useRef();
     const [{cartItems},dispatch]=useStateValue();
-    console.log("cartItems : ", cartItems);
+    // console.log("cartItems : ", cartItems);
     const [items, setItems] = useState([]);
     const addToCart = () => {
         // console.log("item : ",item);

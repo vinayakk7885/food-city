@@ -19,6 +19,7 @@ const App = () => {
 
   useEffect( () => {
     fetchData();
+    console.log("first time rendered");
   }, []); 
   return (
     <AnimatePresence mode='wait'>
