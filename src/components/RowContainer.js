@@ -6,7 +6,6 @@ import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 import CartItem from './CartItem'; 
 const RowContainer = ({ flag,data,scrollValue }) => {
-
     const rowContainer = useRef();
     const [{cartItems},dispatch]=useStateValue();
     // console.log("cartItems : ", cartItems);
@@ -19,7 +18,21 @@ const RowContainer = ({ flag,data,scrollValue }) => {
         });
         localStorage.setItem("cartItems",JSON.stringify(items));
     };
-
+    const addToCartItems= async(item)=>{
+        let isThatItem = false;
+        const searchForItem = await cartItems.map((thatItem)=>{
+            if(item.title === thatItem.title){
+                isThatItem=true;
+            }
+  
+        })
+        if(isThatItem){
+            setItems([...cartItems]);
+        }
+        else{
+            setItems([...cartItems,item]);
+        }
+    }
     useEffect( () => {
         addToCart();
     }, [items] );
@@ -42,7 +55,9 @@ const RowContainer = ({ flag,data,scrollValue }) => {
                 alt="" className="w-32 h-32 object-contain md:w-40 -mt-8 drop-shadow-2xl" 
                 />
                 <div className="flex flex-col items-end justify-between gap-4">
-                    <motion.div whileTap={{ scale : 0.75 }} className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md" onClick={()=>setItems([...cartItems,item])}>
+                    <motion.div whileTap={{ scale : 0.75 }} className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md" onClick={()=>addToCartItems(item)}>
+
+                        {/* onClick={()=>setItems([...cartItems,item])} */}
                         <MdShoppingBasket className="text-white"/>
                     </motion.div>
                     <div>
