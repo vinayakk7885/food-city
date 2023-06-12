@@ -24,7 +24,6 @@ const RowContainer = ({ flag,data,scrollValue }) => {
             if(item.title === thatItem.title){
                 isThatItem=true;
             }
-  
         })
         if(isThatItem){
             setItems([...cartItems]);

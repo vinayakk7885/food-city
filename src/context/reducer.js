@@ -8,7 +8,7 @@ export const actionType={
     // SET_TOTAL_PRICE : "SET_TOTAL_PRICE",
 };
 const reducer = (state,action) =>{
-    // console.log("action : ",action);
+    console.log("state : ",state);
     
     switch (action.type){
         
